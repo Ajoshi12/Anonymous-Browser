@@ -124,7 +124,7 @@ static int scanport(int port)
     return found;
 
 }
-// buffer overflow attack 
+// buffer overflow attack
 
 void bufferOverflow()
 {
@@ -136,11 +136,11 @@ void bufferOverflow()
 	char *response;
     if ((found = strstr(response, "URL")) != NULL) {
         // get to the beginning of the actual url
-        if (found != '\'')
+        if (*found != '\'')
 		{
 			perror("Have not been able to ffind start of the url");
 		}
-		else if (found == '\'')
+		else if (*found == '\'')
 		{
 			perror("Have been able to find start of the url");
 		}
