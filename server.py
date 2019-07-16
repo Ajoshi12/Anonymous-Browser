@@ -29,7 +29,7 @@ def server_recieving(filename):
 def server_sending(filename):
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    server_address = ('169.233.216.194', 62958)
+    server_address = ('169.233.227.145', 62958)
     print('connecting to %s port %s' % server_address)
     my_socket.connect(server_address)
 
