@@ -34,7 +34,7 @@ def client_recieving(filename):
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     #bind socket to port
-    server_address = ('169.233.216.194',62958)
+    server_address = ('169.233.227.145',62958)
     print('starting up on %s port %s' % server_address)
     my_socket.bind(server_address)
 
