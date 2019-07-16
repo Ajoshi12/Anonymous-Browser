@@ -17,4 +17,4 @@ def rm_ban(csv_file):
         csv_write = csv.writer(write_file)
         #for row in rows:
         csv_write.writerows(rows)      
-rm_ban("test.csv")
+rm_ban("sent.csv")

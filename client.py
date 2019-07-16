@@ -3,7 +3,7 @@ import csv
 
 my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-server_address = ('localhost', 1234)
+server_address = ('169.233.201.50', 62958)
 print('connecting to %s port %s' % server_address)
 my_socket.connect(server_address)
 

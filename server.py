@@ -1,25 +1,23 @@
+import socket
+import csv
 
-import socket                    # Import socket module
+#create a TCP/IP socket
+my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-s = socket.socket()              # Create a socket object
-host = "169.233.216.194"         #Ip address that the TCPServer  is there
-port = 62958                     # Reserve a port for your service every new transfer wants a new port or you must wait.
-s.connect(("169.233.216.194", 62958))
-s.send((bytes("Hello server!"))
+#bind socket to port
+server_address = ('169.233.201.50',62958)
+print('starting up on %s port %s' % server_address)
+my_socket.bind(server_address)
 
-with open('received_file', 'wb') as f:
-    print ('file opened')
+
+#listen for incoming connections
+my_socket.listen(5)
+with open('sent.csv','wb') as write_file:
+    client_socket, address = my_socket.accept()
+    row = client_socket.recv(10000)
     while True:
-        print('receiving data...')
-        data = s.recv(1024)
-        data = data.decode("utf-8")
-        print('data=%s', (data))
-        if not data:
-            break
-        # write data to a file
-        f.write(data)
-
-#f.close()
-print('Successfully get the file')
-s.close()
-print('connection closed')
+        write_file.write(row)
+        row = client_socket.recv(10000)
+print("finished")
+client_socket.send("file transfer is complete")
+client_socket.close()
