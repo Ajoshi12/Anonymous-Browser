@@ -9,6 +9,8 @@ app.config['MYSQL_USER'] = 'crowdAnn'
 app.config['MYSQL_PASSWORD'] = 'cmps115!'
 app.config['MYSQL_DB'] = 'CrowdSourcedAnonymity'
 
+mysql = MYSQL(app)
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == "POST":
