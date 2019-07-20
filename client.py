@@ -5,7 +5,7 @@ import csv
 def client_to_server(filename):
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    server_address = ('169.233.216.194', 62958)
+    server_address = ('0.0.0.0', 25565)
     print('connecting to %s port %s' % server_address)
     my_socket.connect(server_address)
 
@@ -34,7 +34,7 @@ def client_recieving(filename):
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     #bind socket to port
-    server_address = ('169.233.227.145',62958)
+    server_address = ('0.0.0.0',25565)
     print('starting up on %s port %s' % server_address)
     my_socket.bind(server_address)
 
@@ -47,6 +47,7 @@ def client_recieving(filename):
         while True:
             write_file.write(row)
             row = client_socket.recv(10000)
+            if not row: break
     print("finished")
     client_socket.send("file transfer is complete")
     client_socket.close()

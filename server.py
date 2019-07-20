@@ -7,7 +7,7 @@ def server_recieving(filename):
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     #bind socket to port
-    server_address = ('169.233.216.194',62958)
+    server_address = ('0.0.0.0',25565)
     print('starting up on %s port %s' % server_address)
     my_socket.bind(server_address)
 
@@ -17,10 +17,12 @@ def server_recieving(filename):
     with open(filename,'wb') as write_file:
         client_socket, address = my_socket.accept()
         row = client_socket.recv(10000)
+        print("Starting to accept")
         while True:
             #row = row.decode("utf-8")
             write_file.write(row)
             row = client_socket.recv(10000)
+            if not row: break
     print("finished")
     client_socket.send("file transfer is complete")
     client_socket.close()
@@ -29,7 +31,7 @@ def server_recieving(filename):
 def server_sending(filename):
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    server_address = ('169.233.227.145', 62958)
+    server_address = ('0.0.0.0', 25565)
     print('connecting to %s port %s' % server_address)
     my_socket.connect(server_address)
 
@@ -53,4 +55,4 @@ def server_sending(filename):
     my_socket.close
 
 #server_recieving("sent.csv")
-server_sending("test.csv")
+server_recieving("test.csv")
