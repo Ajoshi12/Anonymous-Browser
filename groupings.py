@@ -20,7 +20,6 @@ cursor.close()
 except Error as e :
     print ("Error while connecting to MySQL", e)
 
-
  # distinct_users list should have all the users rn
  ###################################################################################
 
@@ -33,27 +32,27 @@ randomUsers = []
     distinct_users.remove(pick) # remove the random pick from distinct_users
 
 #########################After randomizing now we have to create groups####################
-new_list = [data_list[i:i+4] for i in range(0, len(data_list), 4)]
+Random_list = [data_list[i:i+4] for i in range(0, len(data_list), 4)]
 #########################################################################################
-# this creates an list of lists of size 4  but I think OUR CSV  NEEDS MULPTIPLE OF 4 USERS!!!!!!!!!!!!!!!!!!
+# this creates an list of lists of size 4  but I think OUR CSV NEEDS MULPTIPLE OF 4 USERS IN ORDER FOR THIS TO WORK!!!!!!!!!!!!!!!!!!
 #########################################################################################
- 
+for i in range(len(Random_list)):
+    for j in range(len(Random_list[i])):
+        creating_CSV(Random_list[i][j],"Randomized_History.csv")
 
 def creating_CSV(ID,filename)
     try:
-
         mydatabase = mysql.connector.connect(host='localhost', user='crowdAnn', password='cmps115!', database='CrowdSourcedAnonymity')
         cursor = mydatabase.cursor(prepared=True)
         sql_select_query = """select * from dataTable where user = %s"""
         cursor.execute(sql_select_query, (ID, ))
         record = cursor.fetchall()
+        with open(filename, 'w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        # writing into the csv file
         for row in records:
-            # insert into CSV files
+            csvwriter.writerow(row + ',')
         cursor.close()
 
     except Error as e :
         print ("Error while in db when creating csv file", e)
-    finally:
-        #closing database connection.
-        if(mydatabase.is_connected()):
-            connection.close()
