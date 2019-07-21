@@ -39,6 +39,10 @@ Random_list = [data_list[i:i+4] for i in range(0, len(data_list), 4)]
 for i in range(len(Random_list)):
     for j in range(len(Random_list[i])):
         creating_CSV(Random_list[i][j],"Randomized_History.csv")
+              
+SELECT mydatabase = mysql.connector.connect, host='localhost', user='crowdAnn', password='cmps115!', database='CrowdSourcedAnonymity"
+FROM  csv.writer( SELECT user )
+as "cursor.execute" filename;
 
 def creating_CSV(ID,filename)
     try:
