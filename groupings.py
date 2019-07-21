@@ -37,7 +37,7 @@ while distinct_users != []:
     distinct_users.remove(pick) # remove the random pick from distinct_users
 
 #########################After randomizing now we have to create groups####################
-Random_list = [data_list[i:i+4] for i in range(0, len(data_list), 4)]
+Random_list = [randomUsers[i:i+4] for i in range(0, len(randomUsers), 4)]
 #########################################################################################
 # this creates an list of lists of size 4  but I think OUR CSV NEEDS MULPTIPLE OF 4 USERS IN ORDER FOR THIS TO WORK!!!!!!!!!!!!!!!!!!
 #########################################################################################
