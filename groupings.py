@@ -28,7 +28,6 @@ finally:
 
 # randomize users
 randomUsers = []
-pick = []
 while distinct_users != []:
     #  pick a random user in list
     pick = random.choice(distinct_users)
