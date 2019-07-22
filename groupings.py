@@ -34,6 +34,11 @@ while distinct_users != []:
     randomUsers.append(pick) # adds the random pick to our random ordered list
     distinct_users.remove(pick) # remove the random pick from distinct_users
     # print(randomUsers)
+with open('certain-file.csv', mode = 'w') as certain-file;
+certain_writer = csv.writer(certain-file, delimiter=',')
+
+    certain_writer.writerow(['name'])
+    certain_writer.writerow(['url')
 
 #########################After randomizing now we have to create groups####################
 Random_list = [randomUsers[i:i+4] for i in range(0, len(randomUsers), 4)]
