@@ -53,12 +53,15 @@ def creating_CSV(Random_list, i,filename):
         sql_select_query = """select * from dataTable where user = %s"""
         cursor.execute(sql_select_query, ID)
         record = cursor.fetchall()
-        print(record)
+        #print(record)
+        for n in range(len(record)):
+            for m in range(len(record[i])):
+                filename.write(record[i][j]+',')
         # with open(filename, 'w', newline='') as csvfile:
-        with open(filename, 'w', newline='') as csvfile:
-            for row in record:
-                str1 = ' '.join(row)
-                csvfile.write(str1)
+        #with open(filename, 'w', newline='') as csvfile:
+            #for row in record:
+                #str1 = ' '.join(row)
+                #csvfile.write(str1)
                 # print(str1)
             # csvwriter = csv.writer(csvfile, delimiter=',')
             # # data = ['USER', 'URL', 'Title']
@@ -77,7 +80,7 @@ def creating_CSV(Random_list, i,filename):
     # visit_sites("Random_history.csv")
 
 # now we have to create a csv file for each group
-# for i in range(len(Random_list)):
-i=0
+for i in range(len(Random_list)):
     # now instead I'm calling the function for each group once
-creating_CSV(Random_list, i,"Random_history.csv")
+random_csv = open("Random_history.csv","w+")
+creating_CSV(Random_list, i,random_csv)
