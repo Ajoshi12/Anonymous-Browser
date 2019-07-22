@@ -33,7 +33,6 @@ while distinct_users != []:
     pick = random.choice(distinct_users)
     randomUsers.append(pick) # adds the random pick to our random ordered list
     distinct_users.remove(pick) # remove the random pick from distinct_users
-    # print(randomUsers)
 # with open('certain-file.csv', mode = 'w') as certain-file:
 #     certain_writer = csv.writer(certain-file, delimiter=',')
 #     certain_writer.writerow(['name'])
@@ -41,33 +40,35 @@ while distinct_users != []:
 
 #########################After randomizing now we have to create groups####################
 Random_list = [randomUsers[i:i+4] for i in range(0, len(randomUsers), 4)]
-# print(Random_list)
 #########################################################################################
 # this creates our groups
 def creating_CSV(Random_list, i,filename):
     # this loop takes account of each member in the group
     for j in range(len(Random_list[i])):
         ID = Random_list[i][j]
+        # print(ID)
         # try:
         mydatabase = mysql.connector.connect(host='localhost', user='crowdAnn', password='cmps115!', database='CrowdSourcedAnonymity')
         cursor = mydatabase.cursor()
         sql_select_query = """select * from dataTable where user = %s"""
         cursor.execute(sql_select_query, ID)
         record = cursor.fetchall()
-        # print(record)
-        # print("this is the record: ")
-        # print(record)
-        # print(record)
-        # str1 = ''.join(record)
+        print(record)
         # with open(filename, 'w', newline='') as csvfile:
         with open(filename, 'w', newline='') as csvfile:
-            csvwriter = csv.writer(csvfile, delimiter=',')
-            # data = ['USER', 'URL', 'Title']
-            csvwriter.writerow(["USER","URL","Title"])
-            # writing into the csv file
             for row in record:
-                csvwriter.writerow([row])
-            cursor.close()
+                str1 = ' '.join(row)
+                csvfile.write(str1)
+                # print(str1)
+            # csvwriter = csv.writer(csvfile, delimiter=',')
+            # # data = ['USER', 'URL', 'Title']
+            # csvwriter.writerow(["USER","URL","Title"])
+
+            # # writing into the csv file
+            # for row in record:
+            #     csvwriter.writerow(row)
+            #     print(row)
+            # cursor.close()
     #         mydatabase.close()
 
     #     except Error as e:
@@ -76,7 +77,7 @@ def creating_CSV(Random_list, i,filename):
     # visit_sites("Random_history.csv")
 
 # now we have to create a csv file for each group
-for i in range(len(Random_list)):
+# for i in range(len(Random_list)):
+i=0
     # now instead I'm calling the function for each group once
-# 
-    creating_CSV(Random_list, i,"Random_history.csv")
+creating_CSV(Random_list, i,"Random_history.csv")
