@@ -37,12 +37,15 @@ def server_sending(filename):
 
     with open(filename,'r') as open_file:
         csv_read = csv.reader(open_file)
+        column_num = len(next(csv_read))
+        open_file.seek(0)
+        print(column_num)
         for row in csv_read:
             row_send = ''
             counter = 0;
             for ele in row:
                 counter = counter + 1
-                if(counter == 11):
+                if(counter == column_num):
                     row_send += ele + '\n'
                 else:
                     row_send += ele+','
@@ -55,4 +58,4 @@ def server_sending(filename):
     my_socket.close
 
 #server_recieving("sent.csv")
-server_recieving("test.csv")
+server_sending("test.csv")

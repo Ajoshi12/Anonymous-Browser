@@ -11,6 +11,8 @@ def client_to_server(filename):
 
     with open(filename,'r') as open_file:
         csv_read = csv.reader(open_file)
+        column_num = len(next(csv_read))
+        open_file.seek(0)
         for row in csv_read:
             row_send = ''
             counter = 0;
