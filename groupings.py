@@ -8,7 +8,7 @@ try:
     # connect to database and select User from db table
     mydatabase = mysql.connector.connect(host='localhost', user='crowdAnn', password='cmps115!', database='CrowdSourcedAnonymity')
     cursor = mydatabase.cursor()
-    sql_select_Query = "select User from dataTable"
+    sql_select_Query = "select distinct User from dataTable"
     cursor.execute(sql_select_Query)
     records = cursor.fetchall() # runs the select statement to get all distinct users
     for row in records:
