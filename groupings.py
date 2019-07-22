@@ -40,17 +40,16 @@ Random_list = [randomUsers[i:i+4] for i in range(0, len(randomUsers), 4)]
 print(Random_list)
 #########################################################################################
 # this creates our groups
-
+#create CSV
 def creating_CSV(Random_list, i,filename):
     # this loop takes account of each member in the group
     for j in range(len(Random_list[i])):
-        # print(hello)
         ID = Random_list[i][j]
         try:
             mydatabase = mysql.connector.connect(host='localhost', user='crowdAnn', password='cmps115!', database='CrowdSourcedAnonymity')
-            cursor = mydatabase.cursor(prepared=True)
+            cursor = mydatabase.cursor()
             sql_select_query = """select * from dataTable where user = %s"""
-            cursor.execute(sql_select_query, (ID, ))
+            cursor.execute(sql_select_query, ID)
             record = cursor.fetchall()
             with open(filename, 'w', newline='') as csvfile:
                 csvwriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
