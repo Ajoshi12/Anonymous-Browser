@@ -37,34 +37,40 @@ while distinct_users != []:
 
 #########################After randomizing now we have to create groups####################
 Random_list = [randomUsers[i:i+4] for i in range(0, len(randomUsers), 4)]
-print(Random_list)
+# print(Random_list)
 #########################################################################################
 # this creates our groups
-#create CSV
 def creating_CSV(Random_list, i,filename):
     # this loop takes account of each member in the group
     for j in range(len(Random_list[i])):
         ID = Random_list[i][j]
-        try:
-            mydatabase = mysql.connector.connect(host='localhost', user='crowdAnn', password='cmps115!', database='CrowdSourcedAnonymity')
-            cursor = mydatabase.cursor()
-            sql_select_query = """select * from dataTable where user = %s"""
-            cursor.execute(sql_select_query, ID)
-            record = cursor.fetchall()
-            with open(filename, 'w', newline='') as csvfile:
-                csvwriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        # try:
+        mydatabase = mysql.connector.connect(host='localhost', user='crowdAnn', password='cmps115!', database='CrowdSourcedAnonymity')
+        cursor = mydatabase.cursor()
+        sql_select_query = """select * from dataTable where user = %s"""
+        cursor.execute(sql_select_query, ID)
+        record = cursor.fetchall()
+        # print(record)
+        print("this is the record: ")
+        print(record)
+        # print(record)
+        # str1 = ''.join(record)
+        with open(filename, 'w', newline='') as csvfile:
+            csvwriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            
             # writing into the csv file
-            for row in records:
-                csvwriter.writerow(row + ',')
-            cursor.close()
-            mydatabase.close()
+            # for row in records:
+    #             csvwriter.writerow(row + ',')
+    #         cursor.close()
+    #         mydatabase.close()
 
-        except Error as e:
-            print ("Error while in db when creating csv file", e)
-    # calling raghav's function
-    visit_sites("Random_history.csv")
+    #     except Error as e:
+    #         print ("Error while in db when creating csv file", e)
+    # # calling raghav's function
+    # visit_sites("Random_history.csv")
 
 # now we have to create a csv file for each group
-for i in range(len(Random_list)):
+# for i in range(len(Random_list)):
     # now instead I'm calling the function for each group once
-    creating_CSV(Random_list, i,"Random_history.csv")
+i=0;
+creating_CSV(Random_list, i,"Random_history.csv")
