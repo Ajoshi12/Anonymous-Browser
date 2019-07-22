@@ -38,8 +38,8 @@ while distinct_users != []:
 #########################After randomizing now we have to create groups####################
 Random_list = [randomUsers[i:i+4] for i in range(0, len(randomUsers), 4)]
 #########################################################################################
-# this creates an list of lists of size 4  but I think OUR CSV NEEDS MULPTIPLE OF 4 USERS IN ORDER FOR THIS TO WORK!!!!!!!!!!!!!!!!!!
-#########################################################################################
+# this creates our groups 
+# now we have to create a csv file for each group 
 for i in range(len(Random_list)):
     for j in range(len(Random_list[i])):
         creating_CSV(Random_list[i][j],"Randomized_History.csv")
