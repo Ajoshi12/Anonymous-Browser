@@ -3,7 +3,7 @@ from mysql.connector import Error
 import csv
 import random
 
-ef creating_CSV(Random_list, i,filename):
+def creating_CSV(Random_list, i,filename):
     # this loop takes account of each member in the group
     for j in range(len(Random_list[i])):
         ID = Random_list[i][j]
