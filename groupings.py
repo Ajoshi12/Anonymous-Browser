@@ -3,6 +3,8 @@ from mysql.connector import Error
 import csv
 import random
 
+random_csv = open("Random_history.csv", "w+")
+random_csv.write("URL\n")
 distinct_users = []
 try:
     # connect to database and select User from db table
@@ -56,7 +58,8 @@ def creating_CSV(Random_list, i,filename):
         #print(record)
         for n in range(len(record)):
             for m in range(len(record[i])):
-                filename.write(record[i][j]+',')
+                if("http" in record[n][m]):
+                    filename.write(record[n][m]+"\n")
         # with open(filename, 'w', newline='') as csvfile:
         #with open(filename, 'w', newline='') as csvfile:
             #for row in record:
@@ -82,5 +85,4 @@ def creating_CSV(Random_list, i,filename):
 # now we have to create a csv file for each group
 for i in range(len(Random_list)):
     # now instead I'm calling the function for each group once
-random_csv = open("Random_history.csv","w+")
-creating_CSV(Random_list, i,random_csv)
+    creating_CSV(Random_list, i,random_csv)
