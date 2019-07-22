@@ -2,6 +2,7 @@ import mysql.connector
 from mysql.connector import Error
 import csv
 import random
+import pandas as pd  
 
 distinct_users = []
 try:
@@ -39,6 +40,11 @@ certain_writer = csv.writer(certain-file, delimiter=',')
 
     certain_writer.writerow(['name'])
     certain_writer.writerow(['url')
+                             
+  
+
+list1 = Random_list[i][j]
+df = pd.DataFrame(list1)
 
 #########################After randomizing now we have to create groups####################
 Random_list = [randomUsers[i:i+4] for i in range(0, len(randomUsers), 4)]
