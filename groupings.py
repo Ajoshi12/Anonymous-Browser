@@ -2,7 +2,6 @@ import mysql.connector
 from mysql.connector import Error
 import csv
 import random
-import pandas as pd  
 
 distinct_users = []
 try:
@@ -35,16 +34,10 @@ while distinct_users != []:
     randomUsers.append(pick) # adds the random pick to our random ordered list
     distinct_users.remove(pick) # remove the random pick from distinct_users
     # print(randomUsers)
-with open('certain-file.csv', mode = 'w') as certain-file;
-certain_writer = csv.writer(certain-file, delimiter=',')
-
-    certain_writer.writerow(['name'])
-    certain_writer.writerow(['url')
-                             
-  
-
-list1 = Random_list[i][j]
-df = pd.DataFrame(list1)
+# with open('certain-file.csv', mode = 'w') as certain-file:
+#     certain_writer = csv.writer(certain-file, delimiter=',')
+#     certain_writer.writerow(['name'])
+#     certain_writer.writerow(['url'])
 
 #########################After randomizing now we have to create groups####################
 Random_list = [randomUsers[i:i+4] for i in range(0, len(randomUsers), 4)]
@@ -62,17 +55,19 @@ def creating_CSV(Random_list, i,filename):
         cursor.execute(sql_select_query, ID)
         record = cursor.fetchall()
         # print(record)
-        print("this is the record: ")
-        print(record)
+        # print("this is the record: ")
+        # print(record)
         # print(record)
         # str1 = ''.join(record)
+        # with open(filename, 'w', newline='') as csvfile:
         with open(filename, 'w', newline='') as csvfile:
-            csvwriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-            
+            csvwriter = csv.writer(csvfile, delimiter=',')
+            # data = ['USER', 'URL', 'Title']
+            csvwriter.writerow(["USER","URL","Title"])
             # writing into the csv file
-            # for row in records:
-    #             csvwriter.writerow(row + ',')
-    #         cursor.close()
+            for row in record:
+                csvwriter.writerow([row])
+            cursor.close()
     #         mydatabase.close()
 
     #     except Error as e:
@@ -81,7 +76,7 @@ def creating_CSV(Random_list, i,filename):
     # visit_sites("Random_history.csv")
 
 # now we have to create a csv file for each group
-# for i in range(len(Random_list)):
+for i in range(len(Random_list)):
     # now instead I'm calling the function for each group once
-i=0;
-creating_CSV(Random_list, i,"Random_history.csv")
+# 
+    creating_CSV(Random_list, i,"Random_history.csv")
