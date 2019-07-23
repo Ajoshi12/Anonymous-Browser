@@ -47,7 +47,7 @@ def creating_CSV(Random_list, i,filename):
         # connect to database and get all user data
         mydatabase = mysql.connector.connect(host='localhost', user='crowdAnn', password='cmps115!', database='CrowdSourcedAnonymity')
         cursor = mydatabase.cursor()
-        sql_select_query = """select * from dataTable where user = %s"""
+        sql_select_query = """select * from dataTable where user = %s order by rand() limit 3"""
         cursor.execute(sql_select_query, ID)
         record = cursor.fetchall()
         # get the urls of the users and put it in file
