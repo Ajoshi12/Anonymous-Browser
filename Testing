@@ -1,0 +1,19 @@
+Neel: Module: Wrote most of the TCP server, the server,py and the client.py. 
+The functional testing I did was test both the server and the client files and made sure that both of them were able to talk to each other. 
+Furthermore, I made sure that I ended up the contents of the files remained the same, and that they didn't get randomly deleted or anything. To test this functionality, I ran both the client and the server files made sure that the folders in which these files should appear in actually appeared. 
+
+Aishu: Focused heavily on the db part, was also the main tester of the program. 
+The functional testing I did was making sure that the database was able to get up and running, and made sure it was successfully able
+to receive the CSV file and able to import to database. I also fixed a lot of the bugs for the program. To test to make sure that the database worked I made sure that I could enter using a username and a password. Some other test cases to cover is the ability to work everytime. 
+
+Raghav: Helped fix some bugs of the TCP server, ran the TCP server proving it connects remotely connects, and wrote Browsing.py which 
+runs a csv file automatically. The functional testing I did was making sure that Browsing.py and remote access control works. I ensured this worked by automatically running the script, it would open up random url's on a person's computer according to the CSV file. 
+
+Hoa: Wrote the entire banning website url feature, and helped fix a for loop in the TCP server.
+The functional testing I did was making sure that the banned website allowed non banned websites to pass, while eliminating websites that 
+cannot be reused. I made sure that the loop in the TCP server was able to now store all the contents of the file, and that certain errors
+were fixed. I tested functionality by ensuring that when the user ran the script, all the websites they visited that were banned were automatically removed. 
+
+Abhay: I wrote the groupings.py, while fixes a couple of bug fixes to the TCP code. 
+The functional testing I did was making sure the groupings.py function correctly assigned four user histories random data, and also made 
+sure that the TCP server ended up working correctly. A file began deleting randomly sometimes, so I fixed that. You can test groupings.py by checking the output it got and seeing that it got the output of four random users. 

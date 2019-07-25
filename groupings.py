@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector import Error
 import csv
 import random
-
+#create a new csv file with URL header
 random_csv = open("Random_history.csv", "w+")
 random_csv.write("URL\n")
 distinct_users = []
