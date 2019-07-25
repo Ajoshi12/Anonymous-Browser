@@ -4,11 +4,11 @@ import csv
 
 def client_to_server(filename):
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
+    #connect to server
     server_address = ('0.0.0.0', 25565)
     print('connecting to %s port %s' % server_address)
     my_socket.connect(server_address)
-
+    #read csv file and send to server
     with open(filename,'r') as open_file:
         csv_read = csv.reader(open_file)
         column_num = len(next(csv_read))
