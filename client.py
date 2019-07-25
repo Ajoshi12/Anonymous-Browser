@@ -25,7 +25,7 @@ def client_to_server(filename):
             print(row_send)
             row_send = row_send.encode("utf-8")
             my_socket.send(row_send)
-
+    #print message and close socket       
     print("file has been sent")
     my_socket.shutdown(socket.SHUT_WR)
     my_socket.close
@@ -50,6 +50,7 @@ def client_recieving(filename):
             write_file.write(row)
             row = client_socket.recv(10000)
             if not row: break
+    #print message and close socket   
     print("finished")
     client_socket.send("file transfer is complete")
     client_socket.close()
